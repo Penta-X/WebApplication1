@@ -84,3 +84,7 @@ C:\Users\Bilal\source\repos\WebApplication1\obj\Debug\WebApplication1.csproj.Cor
 C:\Users\Bilal\source\repos\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Bilal\source\repos\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Bilal\source\repos\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Bilal\source\repos\WebApplication1\bin\EntityFramework.dll
+C:\Users\Bilal\source\repos\WebApplication1\bin\EntityFramework.SqlServer.dll
+C:\Users\Bilal\source\repos\WebApplication1\bin\EntityFramework.xml
+C:\Users\Bilal\source\repos\WebApplication1\bin\EntityFramework.SqlServer.xml
