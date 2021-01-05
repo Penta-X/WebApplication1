@@ -1,0 +1,23 @@
+﻿@using WebApplication1.Models.Classes
+@model List<Blog>
+<div class="con-bot">
+    @foreach (var x in Model)
+    {
+        <div class="left">
+            <div class="bot-left" style="background:url(@x.image);
+            background-size:cover;
+            background-position:center;
+            height:75px;">
+            </div>
+            <div class="left-text">
+                <h4>@x.title</h4>
+                <span class="doller">@x.date.ToString("dd.MM.yyyy")</span>
+                <p>@x.content.Substring(0,80)...</p>
+                <p><a href="/Blog/BlogDetail/@x.ID"><span class="read"> Read More >></span></a></p>
+            </div>
+        </div>
+    }
+    @Html.Action("Partial2", "Default")
+    <div class="clear"></div>
+</div>
+

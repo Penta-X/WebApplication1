@@ -1,0 +1,30 @@
+﻿@using WebApplication1.Models.Classes
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog List</h2>
+<br />
+<a href="#" class="btn btn-primary">New Blog</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+    <tr>
+        <td>@x.ID</td>
+        <td>@x.title</td>
+        <td><a href="#" class="btn btn-danger">Delete</a></td>
+        <td><a href="#" class="btn btn-warning">Edit</a></td>
+    </tr>
+    }
+</table>
+

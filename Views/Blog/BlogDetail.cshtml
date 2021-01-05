@@ -1,9 +1,8 @@
 ﻿@model WebApplication1.Models.Classes.BlogIE
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "BlogDetail";
     Layout = "~/Views/Shared/_TestLayout.cshtml";
 }
-
 
 <!DOCTYPE HTML>
 <html>
@@ -19,24 +18,23 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
     <!----//webfonts---->
- 
     <!---->
 
 </head>
 <body>
-   
+
     <div class="single">
         <div class="container">
             <div class="col-md-8 single-main">
-                @foreach (var x in Model.Value1)
-                {
 
-                    <div class="single-grid">
-                        <img src="@x.image"/>
-                        <a href="/Blog/BlogDetail/@x.ID">@x.title</a>
+                <div class="single-grid">
+                    @foreach (var x in Model.Value1)
+                    {
+                        <img src="@x.image" />
+                        <h1>@x.title</h1>
                         <p>@x.content</p>
-                </div>
-                }
+                    }
+                    </div>
             </div>
 
             <div class="col-md-4 side-content">
@@ -53,7 +51,7 @@
             <div class="clearfix"></div>
         </div>
     </div>
-  </body>
-    <!---->
+</body>
+<!---->
 
- </html>
+</html>

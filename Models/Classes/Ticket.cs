@@ -10,7 +10,8 @@ namespace WebApplication1.Models.Classes
     {
         [Key]
         public int ID { get; set; }
-        public User userid { get; set; }
+        public int userid { get; set; }
+        public virtual User user { get; set; }
         public string text { get; set; }
         public DateTime date { get; set; }
         public string response { get; set; }
