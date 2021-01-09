@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AWHDb" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=AWHDb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AWHDbConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.crudemp" Method="crudemp">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="surname" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="birthdate" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="idnumber" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="income" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="phonenumber" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="mail" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="password" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="gender" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="familycode" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="CrudOption" Parameter="crudOption" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="crudempResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="surname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="birthdate" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="idnumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="income" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="phonenumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="familycode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

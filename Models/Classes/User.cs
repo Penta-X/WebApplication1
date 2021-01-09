@@ -12,7 +12,7 @@ namespace WebApplication1.Models.Classes
         public int ID { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
-        public DateTime birthdate { get; set; }
+        public string birthdate { get; set; }
         public string idnumber { get; set; }
         public string income { get; set; }
         public char sheltertype { get; set; }
