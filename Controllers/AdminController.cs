@@ -9,54 +9,90 @@ namespace WebApplication1.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        Context c = new Context();
+        
+        DataClasses1DataContext dc = new DataClasses1DataContext();
         [Authorize]
         public ActionResult Index()
         {
-            var values = c.Blogs.ToList();
-            return View(values);
+            var myBlogs = dc.crudblog(null, null, null, null, null, "Select").ToList();
+            return View(myBlogs);
         }
-        [Authorize]
-        [HttpGet]
-        public ActionResult NewBlog()
+        public ActionResult BlogDetails(int id)
+        {
+            var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
+                .Single(x => x.ID == id);
+            return View(blogdetails);
+        }
+        public ActionResult BlogCreate()
         {
             return View();
         }
-        [Authorize]
+
+        // POST: Emp/Create
         [HttpPost]
-        public ActionResult NewBlog(Blog p)
+        public ActionResult BlogCreate(Blog collection)
         {
-            c.Blogs.Add(p);
-            c.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                // TODO: Add insert logic here
+                dc.crudblog(null, collection.title, collection.content,
+                    collection.image, collection.date, "Insert");
+                dc.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
-        [Authorize]
-        public ActionResult DeleteBlog(int id)
+
+        public ActionResult BlogEdit(int id)
         {
-            var b = c.Blogs.Find(id);
-            c.Blogs.Remove(b);
-            c.SaveChanges();
-            return RedirectToAction("Index");
+            var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
+                .Single(x => x.ID == id);
+            return View(blogdetails);
         }
-        [Authorize]
-        public ActionResult GetBlog(int id)
+
+        // POST: Emp/Edit/5
+        [HttpPost]
+        public ActionResult BlogEdit(int id, Blog collection)
         {
-            var bl = c.Blogs.Find(id);
-            return View("GetBlog", bl);
+            try
+            {
+                // TODO: Add update logic here
+                dc.crudblog(id, collection.title, collection.content,
+                    collection.image, collection.date, "Update");
+                dc.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
-        [Authorize]
-        public ActionResult BlogUpdate(Blog b)
+        public ActionResult BlogDelete(int id)
         {
-            var blg = c.Blogs.Find(b.ID);
-            blg.content = b.content;
-            blg.title = b.title;
-            blg.image = b.image;
-            blg.date = b.date;
-            c.SaveChanges();
-            return RedirectToAction("Index");
+            var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
+                .Single(x => x.ID == id);
+            return View(blogdetails);
         }
-        
-        DataClasses1DataContext dc = new DataClasses1DataContext();
+
+        // POST: Emp/Delete/5
+        [HttpPost]
+        public ActionResult BlogDelete(int id, Blog collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                dc.crudblog(id, null, null, null, null, "Delete");
+                dc.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
         [Authorize]
         public ActionResult Users()
         {
