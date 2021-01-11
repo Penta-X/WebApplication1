@@ -282,6 +282,7 @@
     <Content Include="Views\Admin\BlogCreate.cshtml" />
     <Content Include="Views\Admin\BlogEdit.cshtml" />
     <Content Include="Views\Admin\BlogDelete.cshtml" />
+    <Content Include="Views\Default\SheltersMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

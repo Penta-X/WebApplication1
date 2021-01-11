@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "SheltersMap";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+<head>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+      defer">
+    </script>
+    <style type="text/css">
+        /*Set the size of the div element that contains the map*/
+        #map{
+            height:400px;
+            width:100%;
+        }
+
+    </style>
+    <script>
+
+        function initMap() {
+            const uluru = { lat: 43.651070, lng: -79.347015 };
+
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: uluru,
+            });
+
+            var markers = [
+                {
+                    coordinates: { lat: 43.651070, lng: -79.34701 },
+                    content: '<h1>Shlter 1</h2>',
+                    image: image
+                },
+                {
+                    coordinates: { lat: 43.64106489201782, lng: -79.41018060173825 },
+                    content: '<h1>Shlter 2</h2>',
+                    image: image
+                }
+            ]
+
+            for (var i = 0; i < markers.length; i++) {
+                AddMarker(markers[i]);
+            }
+
+            function AddMarker(options) {
+                const marker = new google.maps.Marker({
+                    position: options.coordinates,
+                    map: map,
+                    icon: options.image
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: options.content,
+                });
+
+                marker.addListener('click', function () {
+                    infoWindow.open(map, marker);
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>My Google Maps</h3>
+    <div ip="map"></div>
+</body>
+
