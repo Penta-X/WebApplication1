@@ -24,6 +24,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         public ActionResult Donate()
         {
             return View();

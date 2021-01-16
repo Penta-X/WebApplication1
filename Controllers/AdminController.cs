@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models.Classes;
+
 namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
@@ -11,7 +12,7 @@ namespace WebApplication1.Controllers
         // GET: Admin
         
         DataClasses1DataContext dc = new DataClasses1DataContext();
-
+        [Authorize]
         public ActionResult Ticket()
         {
             var myTickets = dc.usersViews.ToList();
@@ -24,6 +25,7 @@ namespace WebApplication1.Controllers
             var myBlogs = dc.crudblog(null, null, null, null, null, "Select").ToList();
             return View(myBlogs);
         }
+
         public ActionResult BlogDetails(int id)
         {
             var blogdetails = dc.crudblog(id, null, null, null, null, "Details")

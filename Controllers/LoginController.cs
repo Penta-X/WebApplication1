@@ -24,11 +24,20 @@ namespace WebApplication1.Controllers
         public ActionResult Login(Admin ad)
         {
             var info = c.Admins.FirstOrDefault(x => x.mail == ad.mail && x.password == ad.password);
+            var info2 = c.Users.FirstOrDefault(x => x.mail == ad.mail && x.password == ad.password);
+
             if (info != null)
             {
                 FormsAuthentication.SetAuthCookie(info.mail, false);
                 Session["mail"] = info.mail.ToString();
                 return RedirectToAction("Index", "Admin");
+            }
+            
+            else if (info2 != null)
+            {
+                FormsAuthentication.SetAuthCookie(info2.mail, false);
+                Session["mail2"] = info2.mail.ToString();
+                return RedirectToAction("Index", "User");
             }
             else
             {
