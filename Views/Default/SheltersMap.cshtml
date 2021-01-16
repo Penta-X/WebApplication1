@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "SheltersMap";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+
+<head>
+      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
+
+
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGgRbkM6XpAxmzPZX3lDzd1akQPFvgWIg&callback=initMap"
+                type="text/javascript"></script>
+        <style type="text/css">
+            /* Set the size of the div element that contains the map */
+            #map {
+                height: 400px;
+                /* The height is 400 pixels */
+                width: 100%;
+                /* The width is the width of the web page */
+            }
+        </style>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                const uluru = { lat: 43.651070, lng: -79.347015 };
+
+                // The map, centered at Uluru
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 10,
+                    center: uluru,
+                });
+
+                var markers = [
+                    {
+                        coordinates: { lat: 43.651070, lng: -79.347015 },
+                        content: '<h1>Shelter 1</h1>',
+                        //image: image
+                    },
+                    {
+                        coordinates: { lat: 43.64106489201782, lng: -79.41018060173825 },
+                        content: '<h1>Shelter 2</h1>',
+                        //  image: image
+                    }
+
+                ]
+                // The marker, positioned at Uluru
+
+                for (var i = 0; i < markers.length; i++) {
+                    AddMarker(markers[i]);
+                }
+
+
+
+
+                function AddMarker(options) {
+                    const marker = new google.maps.Marker({
+                        position: options.coordinates,
+                        map: map,
+                        // icon: options.image
+                    });
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: options.content,
+                    });
+
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
+                    });
+
+                }
+
+            }
+        </script>*@
+
+    
+</head>
+
+<body>
+    <div class="myBody">
+        <div class='mySidebar pad2'>Listing</div>
+        <div id='map' class='map pad2'>Map</div>
+    </div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoicHlibGwiLCJhIjoiY2tqemozdXVwMDgxdzJvcnJybXdibWUzbyJ9.OwtbtaxxmNYnmJOIjiJ2Gw';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: [-77.034084, 38.909671],
+            zoom: 14
+        });
+    </script>
+    <style>
+                .myBody {
+                    background: #404040;
+                    color: #f8f8f8;
+                    font: 500 20px/26px 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                /* The page is split between map and sidebar - the sidebar gets 1/3, map
+        gets 2/3 of the page. You can adjust this to your personal liking. */
+                .mySidebar {
+                    width: 33.3333%;
+                }
+
+                .map {
+                    border-left: 1px solid #fff;
+                    position: absolute;
+                    left: 33.3333%;
+                    width: 66.6666%;
+                    top: 0;
+                    bottom: 0;
+                }
+
+                .pad2 {
+                    padding: 20px;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+    </style>
+</body>

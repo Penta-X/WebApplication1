@@ -62,6 +62,14 @@ namespace WebApplication1
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<usersView> usersViews
+		{
+			get
+			{
+				return this.GetTable<usersView>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.crudemp")]
 		public ISingleResult<crudempResult> crudemp([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string surname, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string birthdate, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string idnumber, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string income, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string phonenumber, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string mail, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string familycode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CrudOption", DbType="NVarChar(50)")] string crudOption)
 		{
@@ -74,6 +82,87 @@ namespace WebApplication1
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, title, content, image, date, crudOption);
 			return ((ISingleResult<crudblogResult>)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.usersView")]
+	public partial class usersView
+	{
+		
+		private string _name;
+		
+		private string _surname;
+		
+		private string _mail;
+		
+		private string _text;
+		
+		public usersView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(MAX)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this._name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_surname", DbType="NVarChar(MAX)")]
+		public string surname
+		{
+			get
+			{
+				return this._surname;
+			}
+			set
+			{
+				if ((this._surname != value))
+				{
+					this._surname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mail", DbType="NVarChar(MAX)")]
+		public string mail
+		{
+			get
+			{
+				return this._mail;
+			}
+			set
+			{
+				if ((this._mail != value))
+				{
+					this._mail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_text", DbType="NVarChar(MAX)")]
+		public string text
+		{
+			get
+			{
+				return this._text;
+			}
+			set
+			{
+				if ((this._text != value))
+				{
+					this._text = value;
+				}
+			}
 		}
 	}
 	

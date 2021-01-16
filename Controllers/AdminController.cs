@@ -11,6 +11,13 @@ namespace WebApplication1.Controllers
         // GET: Admin
         
         DataClasses1DataContext dc = new DataClasses1DataContext();
+
+        public ActionResult Ticket()
+        {
+            var myTickets = dc.usersViews.ToList();
+            return View(myTickets);
+
+        }
         [Authorize]
         public ActionResult Index()
         {
