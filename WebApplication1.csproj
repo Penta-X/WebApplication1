@@ -287,11 +287,12 @@
     <Content Include="Views\Default\SheltersMap.cshtml" />
     <Content Include="Views\Admin\Ticket.cshtml" />
     <Content Include="web\shelter.geojson" />
-    <Content Include="Views\Default\Donate.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Default\Contact.cshtml" />
+    <Content Include="Views\Default\Donate.cshtml" />
+    <Content Include="Views\User\Donate.cshtml" />
+    <Content Include="Views\Admin\Donations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

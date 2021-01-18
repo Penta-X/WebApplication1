@@ -13,6 +13,7 @@ namespace WebApplication1.Controllers
         // GET: Default
         Context c = new Context();
         BlogIE blogs = new BlogIE();
+        DataClasses1DataContext dc = new DataClasses1DataContext();
         public ActionResult Index()
         {
             blogs.Value1 = c.Blogs.ToList();
@@ -31,7 +32,8 @@ namespace WebApplication1.Controllers
 
         public ActionResult Donate()
         {
-            return View();
+            var myDonates = dc.orderDonates.ToList();
+            return View(myDonates);
         }
 
         public ActionResult SheltersMap()

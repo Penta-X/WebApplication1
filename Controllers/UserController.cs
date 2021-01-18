@@ -33,5 +33,28 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+
+        public ActionResult Donate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Donate(Donation collection)
+        {
+
+            try
+            {
+                // TODO: Add insert logic here
+                dc.crudDonate(null, collection.userid, collection.amount,
+                    false, collection.date, "Insert");
+                dc.SubmitChanges();
+                return RedirectToAction("Donate");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

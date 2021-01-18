@@ -19,6 +19,13 @@ namespace WebApplication1.Controllers
             return View(myTickets);
 
         }
+
+        public ActionResult Donations()
+        {
+            var myDonate = dc.crudDonate(null, null, null, null, null, "Select").ToList();
+            return View(myDonate);
+        }
+
         [Authorize]
         public ActionResult Index()
         {

@@ -70,6 +70,14 @@ namespace WebApplication1
 			}
 		}
 		
+		public System.Data.Linq.Table<orderDonate> orderDonates
+		{
+			get
+			{
+				return this.GetTable<orderDonate>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.crudemp")]
 		public ISingleResult<crudempResult> crudemp([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string surname, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string birthdate, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string idnumber, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string income, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string phonenumber, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string mail, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string familycode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CrudOption", DbType="NVarChar(50)")] string crudOption)
 		{
@@ -89,6 +97,13 @@ namespace WebApplication1
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, text, date, userid, crudOption);
 			return ((ISingleResult<sendTicketResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.crudDonate")]
+		public ISingleResult<crudDonateResult> crudDonate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> verification, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CrudOption", DbType="NVarChar(50)")] string crudOption)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, userid, amount, verification, date, crudOption);
+			return ((ISingleResult<crudDonateResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -168,6 +183,69 @@ namespace WebApplication1
 				if ((this._text != value))
 				{
 					this._text = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.orderDonate")]
+	public partial class orderDonate
+	{
+		
+		private int _amount;
+		
+		private string _name;
+		
+		private string _surname;
+		
+		public orderDonate()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_amount", DbType="Int NOT NULL")]
+		public int amount
+		{
+			get
+			{
+				return this._amount;
+			}
+			set
+			{
+				if ((this._amount != value))
+				{
+					this._amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(MAX)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this._name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_surname", DbType="NVarChar(MAX)")]
+		public string surname
+		{
+			get
+			{
+				return this._surname;
+			}
+			set
+			{
+				if ((this._surname != value))
+				{
+					this._surname = value;
 				}
 			}
 		}
@@ -552,6 +630,104 @@ namespace WebApplication1
 				if ((this._userid != value))
 				{
 					this._userid = value;
+				}
+			}
+		}
+	}
+	
+	public partial class crudDonateResult
+	{
+		
+		private int _ID;
+		
+		private int _userid;
+		
+		private int _amount;
+		
+		private bool _verification;
+		
+		private System.DateTime _date;
+		
+		public crudDonateResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
+		public int userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this._userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_amount", DbType="Int NOT NULL")]
+		public int amount
+		{
+			get
+			{
+				return this._amount;
+			}
+			set
+			{
+				if ((this._amount != value))
+				{
+					this._amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_verification", DbType="Bit NOT NULL")]
+		public bool verification
+		{
+			get
+			{
+				return this._verification;
+			}
+			set
+			{
+				if ((this._verification != value))
+				{
+					this._verification = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime NOT NULL")]
+		public System.DateTime date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this._date = value;
 				}
 			}
 		}
