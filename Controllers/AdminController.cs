@@ -20,10 +20,37 @@ namespace WebApplication1.Controllers
 
         }
 
+        [Authorize]
         public ActionResult Donations()
         {
             var myDonate = dc.crudDonate(null, null, null, null, null, "Select").ToList();
             return View(myDonate);
+        }
+
+        [Authorize]
+        public ActionResult DonationsEdit(int id)
+        {
+            var myDonate = dc.crudDonate(id, null, null, null, null, "Details")
+                .Single(x => x.ID == id);
+            return View(myDonate);
+        }
+
+        // POST: Emp/Edit/5
+        [HttpPost]
+        public ActionResult DonationsEdit(int id, Donation collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                dc.crudDonate(id, collection.userid, collection.amount,
+                    collection.verification, collection.date, "Update");
+                dc.SubmitChanges();
+                return RedirectToAction("Donations");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         [Authorize]
@@ -33,12 +60,14 @@ namespace WebApplication1.Controllers
             return View(myBlogs);
         }
 
+        [Authorize]
         public ActionResult BlogDetails(int id)
         {
             var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
                 .Single(x => x.ID == id);
             return View(blogdetails);
         }
+        [Authorize]
         public ActionResult BlogCreate()
         {
             return View();
@@ -61,7 +90,7 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
-
+        [Authorize]
         public ActionResult BlogEdit(int id)
         {
             var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
@@ -86,6 +115,7 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+        [Authorize]
         public ActionResult BlogDelete(int id)
         {
             var blogdetails = dc.crudblog(id, null, null, null, null, "Details")
@@ -117,12 +147,14 @@ namespace WebApplication1.Controllers
             return View(myUsers);
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
             var empdetails = dc.crudemp(id, null, null, null, null, 
                 null, null, null, null, null, null, "Details").Single(x => x.ID == id);
             return View(empdetails);
         }
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -178,6 +210,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Emp/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var empdetails = dc.crudemp(id, null, null, null, null, null, 

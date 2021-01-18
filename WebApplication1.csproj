@@ -293,6 +293,7 @@
     <Content Include="Views\Default\Donate.cshtml" />
     <Content Include="Views\User\Donate.cshtml" />
     <Content Include="Views\Admin\Donations.cshtml" />
+    <Content Include="Views\Admin\DonationsEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
